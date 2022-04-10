@@ -21,7 +21,5 @@ export interface WorldwideData {
   recoveredPerOneMillion: number
   criticalPerOneMillion: number
   affectedCountries: number
-}
-export interface CountryData {
-  country: string
+  countriesData: any
 }
