@@ -3,6 +3,7 @@ import Card from '../Components/Card'
 import Navbar from '../Components/Navbar'
 import WorldwideData from '../Components/WorldwideData'
 import dynamic from 'next/dynamic'
+import StatCards from '../Components/StatCards'
 const WorldMap = dynamic(() => import('../Components/WorldMap'), {
   ssr: false,
 })
@@ -20,6 +21,7 @@ const Home: NextPage = (props: any) => {
         </Card>
         <WorldMap countriesData={props.countriesData} />
       </div>
+      <StatCards/>
     </>
   )
 }
