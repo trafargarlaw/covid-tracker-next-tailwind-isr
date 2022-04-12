@@ -4,24 +4,34 @@ import Navbar from '../Components/Navbar'
 import WorldwideData from '../Components/WorldwideData'
 import dynamic from 'next/dynamic'
 import StatCards from '../Components/StatCards'
+import Globe from '../Components/Globe'
+import { useState } from 'react'
+
 const WorldMap = dynamic(() => import('../Components/WorldMap'), {
   ssr: false,
 })
 
 const Home: NextPage = (props: any) => {
+  const [selectedCountry, setSelectedCountry] = useState('CAN')
+
   return (
     <>
       <Navbar />
-      <div className="flex flex-row-reverse justify-around bg-gray-100 px-6 py-10">
+      <div className="flex flex-wrap items-center justify-center bg-gray-100 ">
+        <Globe
+          selectedCountry={selectedCountry}
+          countriesCovData={props.countriesData}
+        />
         <Card>
           <WorldwideData
             worldwide={props.worldwideData}
             countries={props.countriesData}
+            selectedCountry={selectedCountry}
+            setSelectedCountry={setSelectedCountry}
           />
         </Card>
-        <WorldMap countriesData={props.countriesData} />
       </div>
-      <StatCards/>
+      <StatCards worldwide={props.worldwideData} />
     </>
   )
 }

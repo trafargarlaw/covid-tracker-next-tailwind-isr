@@ -1,5 +1,5 @@
 import { ResponsiveChoropleth } from '@nivo/geo'
-import mapJson from '../map.json'
+import mapJson from '../public/json/map.json'
 import React from 'react'
 
 const WorldMap = ({ countriesData }: any) => {

@@ -3,8 +3,8 @@ import React from 'react'
 
 const SideBar = () => {
   return (
-    <div className="border-grey-300  w-full rounded-md border bg-white shadow">
-      <div className="p-2 ml-12">
+    <div className="border-grey-300 rounded-md border bg-white shadow">
+      <div className="m-auto w-[90%] p-2">
         <Image src="/logo.png" alt="logo" width={55} height={55} />
       </div>
     </div>

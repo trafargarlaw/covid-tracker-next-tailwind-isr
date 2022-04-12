@@ -11,7 +11,7 @@ const Progress: React.FC<ProgressProps> = ({ color, percentage }) => {
     backgroundColor: color,
   }
   return (
-    <div className={`h-1.5 rounded-r`} style={containerStyles}>
+    <div className={`h-1.5 rounded-full`} style={containerStyles}>
       <span></span>
     </div>
   )
