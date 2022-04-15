@@ -81,7 +81,10 @@ const StatCard: React.FC<StatCardProps> = ({
     <Card addClass="relative">
       <div className="space-y-2 font-Roboto">
         <h1 className="text-sm font-bold text-slate-700	">{title}</h1>
-        <div className={`text-4xl font-bold  lg:text-3xl  text-${casesColor} `}>
+        <div
+          className={`text-4xl font-bold  lg:text-3xl `}
+          style={{ color: casesColor }}
+        >
           {cases}
         </div>
       </div>
@@ -91,7 +94,8 @@ const StatCard: React.FC<StatCardProps> = ({
       </div>
       <div className="absolute bottom-0 left-0 -z-10 w-full">
         <svg
-          className={` h-full w-full stroke-${casesColor} fill-${fillColor}  `}
+          className={` h-full w-full   `}
+          style={{ fill: fillColor, stroke: casesColor }}
           width={'100%'}
           height={'100%'}
           ref={ref as any}
