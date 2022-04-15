@@ -1,23 +1,37 @@
-# Next.js + Tailwind CSS Example
+# Covid tracker using incremental site regeneration with NextJs and TailwindCss
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+A Covid tracker Application using incremental site regeneration with NextJs and TailwindCss
 
-## Deploy your own
+## Description
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+This is a NextJs App that generates static site that overviews Covid data, the site regenerates every 24 hours using Static Site Regeneration from NextJs.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+- Data source : disease.sh - [Open Disease Data API](https://disease.sh/)
+- Design template was totally inspired from dashlite template on dribbble
+- Charts and Globe were made using d3js, sample on [ObservableHq](https://observablehq.com/d/4b671b987c987566)
 
-## How to use
+## Getting Started
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+### Installing
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app -- --example with-tailwindcss with-tailwindcss-app
+- Clone this repository
+
+```
+git clone <this repository>
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- run the following command to install dependencies:
+
+```
+npm install
+```
+
+### Executing program
+
+- Run the following command :
+
+```
+npm run dev
+```
+
+
