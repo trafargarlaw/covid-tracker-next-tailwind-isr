@@ -1,32 +1,32 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { WorldwideDataType } from '../utils/types'
+import { useEffect, useState } from 'react'
+import { CountryDataType, WorldwideDataType } from '../utils/types'
 import { addComma, getPercentage } from '../utils/utilityFunctions'
 import ProgressBar from './ProgressBar'
 
 interface DataProps {
-  worldwide: WorldwideDataType
-  countries: any[]
+  countries: CountryDataType[]
   selectedCountry: string
   setSelectedCountry: React.Dispatch<React.SetStateAction<string>>
 }
 
 const WorldwideData: React.FC<DataProps> = ({
-  worldwide,
   countries,
   selectedCountry,
   setSelectedCountry,
 }) => {
-  const [selectedCountryData, setSelectedCountryData] = useState<any>(worldwide)
+  const [selectedCountryData, setSelectedCountryData] =
+    useState<CountryDataType>(
+      countries.find(
+        (country: CountryDataType) =>
+          country.countryInfo.iso3 === selectedCountry
+      )!
+    )
 
   useEffect(() => {
-    if (selectedCountry === 'worldwide') {
-      setSelectedCountryData(worldwide)
-    } else {
-      const country = countries.find(
-        (country: any) => country.countryInfo.iso3 === selectedCountry
-      )
-      setSelectedCountryData(country)
-    }
+    const country = countries.find(
+      (country: CountryDataType) => country.countryInfo.iso3 === selectedCountry
+    )
+    setSelectedCountryData(country!)
   }, [selectedCountry])
 
   return (
@@ -42,9 +42,8 @@ const WorldwideData: React.FC<DataProps> = ({
       <select
         name="countrySelect"
         id="counrySelect"
-        className="w-80 rounded-md border  border-slate-500 p-2 font-Roboto text-slate-700 outline-none focus:border-blue-300"
+        className="w-[22rem] rounded-md border  border-slate-500 p-2 font-Roboto text-slate-700 outline-none focus:border-blue-300"
         onChange={(e) => {
-          console.log(e.target.value)
           setSelectedCountry(e.target.value)
         }}
       >

@@ -9,17 +9,27 @@ export interface WorldwideDataType {
   todayRecovered: number
   active: number
   critical: number
-  casesPerOneMillion: number
-  deathsPerOneMillion: number
-  tests: number
-  testsPerOneMillion: number
+}
+
+export interface CountryDataType {
+  updated: number
+  country: string
+  countryInfo: {
+    _id: number
+    iso2: string
+    iso3: string
+    uniqueItems: true
+    lat: number
+    long: number
+    flag: string
+  }
+  cases: number
+  todayCases: number
+  deaths: number
+  todayDeaths: number
+  recovered: number
+  todayRecovered: number
+  active: number
+  critical: number
   population: number
-  oneCasePerPeople: number
-  oneDeathPerPeople: number
-  oneTestPerPeople: number
-  activePerOneMillion: number
-  recoveredPerOneMillion: number
-  criticalPerOneMillion: number
-  affectedCountries: number
-  countriesData: any
 }

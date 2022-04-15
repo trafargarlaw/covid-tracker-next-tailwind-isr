@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface ProgressProps {
   color: string
   percentage: string

@@ -1,19 +1,21 @@
-import React, { useState } from 'react'
 import { useD3 } from '../utils/useD3'
 import * as d3 from 'd3'
 import { queue } from 'd3-queue'
 import { mesh, feature } from 'topojson'
 import worldJson from '../public/json/world-110m.json'
 import map from '../public/json/map.json'
+import { CountryDataType } from '../utils/types'
 
 interface GlobePorps {
   selectedCountry: string
-  countriesCovData: any[]
+  countriesCovData: CountryDataType[]
 }
 
 const Globe: React.FC<GlobePorps> = ({ selectedCountry, countriesCovData }) => {
-  const renderGlobe = (canv: any) => {
-    console.log(canv)
+  // what is canv type? canv
+  const renderGlobe = (
+    canv: d3.Selection<d3.BaseType, unknown, HTMLElement, any>
+  ) => {
     const width = 500,
       height = 500
     const projection = d3
@@ -23,18 +25,18 @@ const Globe: React.FC<GlobePorps> = ({ selectedCountry, countriesCovData }) => {
       .clipAngle(90)
       .precision(0.6)
 
-    const c = canv.node().getContext('2d')
+    const c = (canv.node() as HTMLCanvasElement).getContext('2d')!
     const path = d3.geoPath().projection(projection).context(c)
     const title = d3.select('.title')
 
     queue().await(ready)
-    function ready(error: any, world: any, names: any) {
+    function ready(error: Error) {
       if (error) throw error
 
       const globe = { type: 'Sphere' },
         land = feature(worldJson as any, worldJson.objects.land as any),
         countries = map.features.filter(
-          (country: { id: any }) =>
+          (country: { id: string }) =>
             !!countriesCovData.find(
               (value: { countryInfo: { iso3: any } }) =>
                 value.countryInfo.iso3 == country.id
@@ -47,7 +49,6 @@ const Globe: React.FC<GlobePorps> = ({ selectedCountry, countriesCovData }) => {
             return a !== b
           }
         )
-      console.log(countries)
 
       function transition(iso3: string) {
         d3.transition()
@@ -55,14 +56,16 @@ const Globe: React.FC<GlobePorps> = ({ selectedCountry, countriesCovData }) => {
           .on('start', function () {
             title.text(
               countriesCovData.find(
-                (value: { countryInfo: { iso3: any } }) =>
+                (value: { countryInfo: { iso3: string } }) =>
                   value.countryInfo.iso3 == iso3
               )!.cases
             )
           })
           .tween('rotate', function () {
             const p = d3.geoCentroid(
-                countries.find((value: { id: any }) => value.id == iso3) as any
+                countries.find(
+                  (value: { id: string }) => value.id == iso3
+                ) as any
               ),
               r = d3.interpolate(projection.rotate(), [-p[0], -p[1]])
             return function (t) {
@@ -76,7 +79,7 @@ const Globe: React.FC<GlobePorps> = ({ selectedCountry, countriesCovData }) => {
                 c.beginPath(),
                 path(
                   countries.find(
-                    (value: { id: any }) => value.id == iso3
+                    (value: { id: string }) => value.id == iso3
                   ) as any
                 ),
                 c.fill()

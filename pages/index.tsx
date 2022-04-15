@@ -1,18 +1,20 @@
 import type { NextPage } from 'next'
 import Card from '../Components/Card'
 import Navbar from '../Components/Navbar'
-import WorldwideData from '../Components/WorldwideData'
-import dynamic from 'next/dynamic'
+import CountryCardContent from '../Components/CountryCardContent'
 import StatCards from '../Components/StatCards'
 import Globe from '../Components/Globe'
 import { useState } from 'react'
+import { CountryDataType, WorldwideDataType } from '../utils/types'
+import BrowseByCountry from '../Components/BrowseByCountry'
 
-const WorldMap = dynamic(() => import('../Components/WorldMap'), {
-  ssr: false,
-})
+interface HomeProps {
+  worldwideData: WorldwideDataType
+  countriesData: CountryDataType[]
+}
 
-const Home: NextPage = (props: any) => {
-  const [selectedCountry, setSelectedCountry] = useState('CAN')
+const Home: NextPage<HomeProps> = ({ worldwideData, countriesData }) => {
+  const [selectedCountry, setSelectedCountry] = useState<string>('CAN')
 
   return (
     <>
@@ -20,18 +22,34 @@ const Home: NextPage = (props: any) => {
       <div className="flex flex-wrap items-center justify-center bg-gray-100 ">
         <Globe
           selectedCountry={selectedCountry}
-          countriesCovData={props.countriesData}
+          countriesCovData={countriesData}
         />
-        <Card>
-          <WorldwideData
-            worldwide={props.worldwideData}
-            countries={props.countriesData}
+        <Card addClass="bg-white">
+          <CountryCardContent
+            countries={countriesData}
             selectedCountry={selectedCountry}
             setSelectedCountry={setSelectedCountry}
           />
         </Card>
       </div>
-      <StatCards worldwide={props.worldwideData} />
+      <StatCards worldwide={worldwideData} />
+      <div className="mt-6 flex  flex-wrap lg:mx-16 lg:flex  ">
+        <Card addClass="row-span-2  lg:w-[60%]">
+          <BrowseByCountry
+            countriesCovData={countriesData}
+            worldwideCovData={worldwideData}
+          />
+        </Card>
+
+        <div>
+          <Card>
+            <div>HELLO there</div>
+          </Card>
+          <Card>
+            <div>Oh hello</div>
+          </Card>
+        </div>
+      </div>
     </>
   )
 }
@@ -49,7 +67,9 @@ export async function getStaticProps() {
   return {
     props: {
       worldwideData,
-      countriesData,
+      countriesData: countriesData.sort((a: any, b: any) => {
+        return b['cases'] - a['cases']
+      }),
     },
   }
 }

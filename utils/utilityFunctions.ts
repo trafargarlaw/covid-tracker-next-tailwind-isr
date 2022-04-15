@@ -1,3 +1,4 @@
+import * as d3 from 'd3'
 export const getPercentage = (value: number, total: number) => {
   return ((value * 100) / total).toFixed(2).toString()
 }
