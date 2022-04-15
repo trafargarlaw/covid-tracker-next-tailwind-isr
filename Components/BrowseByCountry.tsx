@@ -1,4 +1,3 @@
-import { MouseEventHandler, useEffect, useMemo, useState } from 'react'
 import { CountryDataType, WorldwideDataType } from '../utils/types'
 import { addComma } from '../utils/utilityFunctions'
 
@@ -27,7 +26,7 @@ const BrowseByCountry: React.FC<Props> = ({
             Deaths
           </span>
         </div>
-        <ul className="max-h-96 overflow-scroll text-xs font-medium sm:text-sm ">
+        <ul className="max-h-[32rem] overflow-scroll text-xs font-medium sm:text-sm ">
           <li className="grid grid-cols-4 border-b p-1 text-right">
             <div className="flex  items-center space-x-4">
               <img

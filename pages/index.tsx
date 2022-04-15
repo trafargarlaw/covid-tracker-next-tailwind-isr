@@ -7,6 +7,7 @@ import Globe from '../Components/Globe'
 import { useState } from 'react'
 import { CountryDataType, WorldwideDataType } from '../utils/types'
 import BrowseByCountry from '../Components/BrowseByCountry'
+import MostAffected from '../Components/MostAffected'
 
 interface HomeProps {
   worldwideData: WorldwideDataType
@@ -33,20 +34,20 @@ const Home: NextPage<HomeProps> = ({ worldwideData, countriesData }) => {
         </Card>
       </div>
       <StatCards worldwide={worldwideData} />
-      <div className="mt-6 flex  flex-wrap lg:mx-16 lg:flex  ">
-        <Card addClass="row-span-2  lg:w-[60%]">
+      <div className="mt-6 flex flex-wrap lg:mx-16   ">
+        <Card addClass="row-span-2 lg:basis-[58%]  lg:w-[60%]">
           <BrowseByCountry
             countriesCovData={countriesData}
             worldwideCovData={worldwideData}
           />
         </Card>
 
-        <div>
-          <Card>
-            <div>HELLO there</div>
+        <div className="mx-2 mt-4 w-full space-y-4 lg:mx-0 lg:mt-0 lg:basis-[40%]">
+          <Card addClass="!mx-0">
+            <MostAffected countriesCovData={countriesData.slice(0, 5)} />
           </Card>
-          <Card>
-            <div>Oh hello</div>
+          <Card addClass="!mx-0">
+            <MostAffected countriesCovData={countriesData.slice(0, 5)} />
           </Card>
         </div>
       </div>
