@@ -72,6 +72,5 @@ export async function getStaticProps() {
         return b['cases'] - a['cases']
       }),
     },
-    revalidate: 60 * 60 * 24,
   }
 }
