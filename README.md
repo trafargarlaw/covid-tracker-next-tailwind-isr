@@ -1,6 +1,6 @@
 # Covid tracker using incremental site regeneration with NextJs and TailwindCss
 
-A Covid tracker Application using incremental site regeneration with NextJs and TailwindCss
+A Covid tracker Application using incremental site regeneration with NextJs and TailwindCss. [DEMO Here](https://covid-tracker-next-tailwind-isr.vercel.app/)
 
 ## Description
 
