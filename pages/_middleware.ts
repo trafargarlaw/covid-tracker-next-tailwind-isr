@@ -16,6 +16,11 @@ export async function middleware(req: NextRequest) {
   }
 
   if (!PUBLIC_FILE.test(req.nextUrl.pathname)) {
+    if (req.nextUrl.pathname !== '/') {
+      const url = req.nextUrl.clone()
+      url.pathname = '/'
+      return NextResponse.redirect(url)
+    }
     req.nextUrl.pathname = `/${countryIso3}`
     return NextResponse.rewrite(req.nextUrl)
   }
