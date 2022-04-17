@@ -47,7 +47,6 @@ const WorldwideData: React.FC<DataProps> = ({
           setSelectedCountry(e.target.value)
         }}
       >
-        <option value={selectedCountry}>Canada</option>
         {countries.map((c) => {
           if (c.country === 'Diamond Princess') return
           return (

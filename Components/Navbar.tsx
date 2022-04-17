@@ -107,7 +107,7 @@ const SideBar: React.FC = () => {
             About
           </a>
         </li>
-        <li className="p-2">
+        <li className="mb-4 p-2">
           <a
             href="https://github.com/trafargarlaw/covid-tracker-next-tailwind-isr"
             className="rounded-md bg-blue-500 px-4 py-2 text-sm font-semibold text-gray-100"

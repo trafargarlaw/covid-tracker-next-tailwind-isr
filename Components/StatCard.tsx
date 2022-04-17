@@ -42,7 +42,7 @@ const StatCard: React.FC<StatCardProps> = ({
     { date: '2022-04-03', cases: 491405149 },
   ]
 
-  const renderLineChart = (canv: any) => {
+  const renderLineChart = (svg: any) => {
     let height = 150,
       width = 800,
       margin = {
@@ -71,12 +71,13 @@ const StatCard: React.FC<StatCardProps> = ({
       .y0(yScale(0))
       .curve(d3.curveNatural)
 
-    canv
+    svg
       .append('path')
       .attr('d', area(data as any))
       .attr('stroke-width', '2px')
   }
-  const ref = useD3(renderLineChart, 'data')
+  const statCardRef = useD3(renderLineChart, '')
+
   return (
     <Card addClass="relative">
       <div className="space-y-2 font-Roboto">
@@ -98,7 +99,7 @@ const StatCard: React.FC<StatCardProps> = ({
           style={{ fill: fillColor, stroke: casesColor }}
           width={'100%'}
           height={'100%'}
-          ref={ref as any}
+          ref={statCardRef as any}
         ></svg>
       </div>
     </Card>
