@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useClickOutside } from '../utils/useClickOutside'
 
 const SideBar: React.FC = () => {

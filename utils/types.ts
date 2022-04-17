@@ -1,4 +1,3 @@
-// n9der nbdl had file  7it ma3rftch best practice dyal fin ndefini les types dyal les fonctions
 export interface WorldwideDataType {
   updated: number
   cases: number

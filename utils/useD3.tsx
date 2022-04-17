@@ -13,5 +13,6 @@ export const useD3 = (
     renderChartFn(d3.select(ref.current!))
     return () => {}
   }, [dependencies])
+
   return ref
 }

@@ -79,6 +79,7 @@ export const getStaticProps: GetStaticProps = async ({
       }),
       country,
     },
+    revalidate: 600,
   }
 }
 export const getStaticPaths: GetStaticPaths = async () => {
