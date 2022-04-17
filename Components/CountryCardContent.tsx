@@ -42,6 +42,7 @@ const WorldwideData: React.FC<DataProps> = ({
       <select
         name="countrySelect"
         id="counrySelect"
+        value={selectedCountry}
         className="w-[22rem] rounded-md border  border-slate-500 p-2 font-Roboto text-slate-700 outline-none focus:border-blue-300"
         onChange={(e) => {
           setSelectedCountry(e.target.value)

@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 import Card from '../Components/Card'
 import Navbar from '../Components/Navbar'
 import CountryCardContent from '../Components/CountryCardContent'
@@ -8,14 +8,18 @@ import { useState } from 'react'
 import { CountryDataType, WorldwideDataType } from '../utils/types'
 import BrowseByCountry from '../Components/BrowseByCountry'
 import MostAffected from '../Components/MostAffected'
-
+import type { ParsedUrlQuery } from 'querystring'
 interface HomeProps {
   worldwideData: WorldwideDataType
   countriesData: CountryDataType[]
+  country: string
+}
+interface Params extends ParsedUrlQuery {
+  country: string
 }
 
-const Home: NextPage<HomeProps> = ({ worldwideData, countriesData }) => {
-  const [selectedCountry, setSelectedCountry] = useState<string>('CAN')
+const Home = ({ worldwideData, countriesData, country }: HomeProps) => {
+  const [selectedCountry, setSelectedCountry] = useState<string>(country)
 
   return (
     <>
@@ -57,7 +61,9 @@ const Home: NextPage<HomeProps> = ({ worldwideData, countriesData }) => {
 
 export default Home
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async ({
+  params: { country },
+}: any) => {
   const worldwideData = await fetch('https://disease.sh/v3/covid-19/all').then(
     (result) => result.json()
   )
@@ -71,7 +77,14 @@ export async function getStaticProps() {
       countriesData: countriesData.sort((a: any, b: any) => {
         return b['cases'] - a['cases']
       }),
+      country,
     },
-    revalidate: 60 * 60 * 24,
+  }
+}
+export const getStaticPaths: GetStaticPaths = async () => {
+  // We don't want to specify all possible countries as we get those from the headers
+  return {
+    paths: [],
+    fallback: 'blocking',
   }
 }
