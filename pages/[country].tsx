@@ -38,7 +38,7 @@ const Home = ({ worldwideData, countriesData, country }: HomeProps) => {
         </Card>
       </div>
       <StatCards worldwide={worldwideData} />
-      <div className="mt-6 flex flex-wrap lg:mx-16   ">
+      <div className="my-6 flex flex-wrap lg:mx-16   ">
         <Card addClass="row-span-2 lg:basis-[58%]  lg:w-[60%]">
           <BrowseByCountry
             countriesCovData={countriesData}
@@ -73,10 +73,32 @@ export const getStaticProps: GetStaticProps = async ({
 
   return {
     props: {
-      worldwideData,
-      countriesData: countriesData.sort((a: any, b: any) => {
-        return b['cases'] - a['cases']
-      }),
+      worldwideData: {
+        cases: worldwideData.cases,
+        deaths: worldwideData.deaths,
+        recovered: worldwideData.recovered,
+        todayCases: worldwideData.todayCases,
+        todayDeaths: worldwideData.todayDeaths,
+        active: worldwideData.active,
+        critical: worldwideData.critical,
+      },
+      countriesData: countriesData
+        .map((country: CountryDataType) => ({
+          country: country.country,
+          countryInfo: {
+            iso3: country.countryInfo.iso3,
+            flag: country.countryInfo.flag,
+          },
+          cases: country.cases,
+          todayCases: country.todayCases,
+          deaths: country.deaths,
+          todayDeaths: country.todayDeaths,
+          todayRecovered: country.todayRecovered,
+          recovered: country.recovered,
+        }))
+        .sort((a: any, b: any) => {
+          return b['cases'] - a['cases']
+        }),
       country,
     },
     revalidate: 600,

@@ -16,10 +16,8 @@ const WorldwideData: React.FC<DataProps> = ({
 }) => {
   const [selectedCountryData, setSelectedCountryData] =
     useState<CountryDataType>(
-      countries.find(
-        (country: CountryDataType) =>
-          country.countryInfo.iso3 === selectedCountry
-      )!
+      countries.find((country) => country.country === selectedCountry) ||
+        countries[0]
     )
 
   useEffect(() => {
@@ -43,7 +41,7 @@ const WorldwideData: React.FC<DataProps> = ({
         name="countrySelect"
         id="counrySelect"
         value={selectedCountry}
-        className="w-[22rem] rounded-md border  border-slate-500 p-2 font-Roboto text-slate-700 outline-none focus:border-blue-300"
+        className="w-full rounded-md border  border-slate-500 p-2 font-Roboto text-slate-700 outline-none focus:border-blue-300"
         onChange={(e) => {
           setSelectedCountry(e.target.value)
         }}

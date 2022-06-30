@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { CountryDataType, WorldwideDataType } from '../utils/types'
 import { addComma } from '../utils/utilityFunctions'
 
@@ -29,10 +30,13 @@ const MostAffected: React.FC<Props> = ({ countriesCovData }) => {
               key={country.country}
             >
               <div className="flex  items-center space-x-4 ">
-                <img
+                <Image
                   src={country.countryInfo.flag}
                   alt="flag"
-                  className="h-4 w-7 rounded-md"
+                  className="rounded-md"
+                  height={16}
+                  width={28}
+                  quality={50}
                 />
                 <span className="max-w-[5rem] overflow-hidden text-ellipsis whitespace-nowrap">
                   {country.country}
