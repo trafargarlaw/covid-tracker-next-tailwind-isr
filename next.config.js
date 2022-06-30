@@ -4,4 +4,5 @@ module.exports = {
   images: {
     domains: ['cdn-icons-png.flaticon.com', 'disease.sh'],
   },
+  future: { webpack5: true },
 }
