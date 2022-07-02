@@ -75,7 +75,7 @@ const Globe: React.FC<GlobePorps> = ({ selectedCountry, countriesCovData }) => {
               c?.beginPath()
               path(land)
               c?.fill()
-              c.fillStyle = 'blue'
+              c.fillStyle = '#1821E6'
               c.beginPath()
               path(
                 countries.find(

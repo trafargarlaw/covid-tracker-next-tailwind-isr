@@ -12,12 +12,12 @@ const SideBar: React.FC = () => {
     <>
       <div className="border-grey-300 rounded-md border bg-white  shadow">
         <div className="m-auto flex w-[90%] items-center justify-between p-2">
-          <Image src="/images/logo.png" alt="logo" width={55} height={55} />
+          <img src="/images/logo.png" alt="logo" className="h-14 w-14" />
           <ul className="hidden justify-around  sm:flex">
             <li>
               <a
                 href="https://www.who.int/health-topics/coronavirus#tab=tab_3"
-                className="rounded-md  px-4 py-2 text-sm font-semibold text-gray-800"
+                className="ray-800  rounded-md px-4 py-2 text-sm font-semibold"
               >
                 Symptoms
               </a>

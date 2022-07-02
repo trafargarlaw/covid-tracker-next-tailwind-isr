@@ -30,25 +30,22 @@ const MostAffected: React.FC<Props> = ({ countriesCovData }) => {
               key={country.country}
             >
               <div className="flex  items-center space-x-4 ">
-                <Image
+                <img
                   src={country.countryInfo.flag}
                   alt="flag"
-                  className="rounded-md"
-                  height={16}
-                  width={28}
-                  quality={50}
+                  className="h-4 w-8 rounded-md"
                 />
                 <span className="max-w-[5rem] overflow-hidden text-ellipsis whitespace-nowrap">
                   {country.country}
                 </span>
               </div>
               <div className=" space-x-2">
-                <span className="hidden whitespace-nowrap  text-blue-500 md:inline-block "></span>
+                <span className="hidden whitespace-nowrap  text-blue-600 md:inline-block "></span>
                 <span>{addComma(country.cases)}</span>
               </div>
               <span>{addComma(country.recovered)}</span>
               <div className="space-x-2">
-                <span className="hidden whitespace-nowrap text-red-500  md:inline-block "></span>
+                <span className="hidden whitespace-nowrap text-red-600  md:inline-block "></span>
                 <span>{addComma(country.deaths)}</span>
               </div>
             </li>

@@ -9,12 +9,11 @@ import { CountryDataType, WorldwideDataType } from '../utils/types'
 import BrowseByCountry from '../Components/BrowseByCountry'
 import MostAffected from '../Components/MostAffected'
 import type { ParsedUrlQuery } from 'querystring'
+import Head from 'next/head'
+import { Html } from 'next/document'
 interface HomeProps {
   worldwideData: WorldwideDataType
   countriesData: CountryDataType[]
-  country: string
-}
-interface Params extends ParsedUrlQuery {
   country: string
 }
 
@@ -23,6 +22,13 @@ const Home = ({ worldwideData, countriesData, country }: HomeProps) => {
 
   return (
     <>
+      <Head>
+        <title>COVID-19 Tracker</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="description" content="A Worldwide Tracker for COVID-19." />
+      </Head>
+
       <Navbar />
       <div className="flex flex-wrap items-center justify-center bg-gray-100 ">
         <Globe
@@ -67,6 +73,7 @@ export const getStaticProps: GetStaticProps = async ({
   const worldwideData = await fetch('https://disease.sh/v3/covid-19/all').then(
     (result) => result.json()
   )
+
   const countriesData = await fetch(
     'https://disease.sh/v3/covid-19/countries'
   ).then((result) => result.json())

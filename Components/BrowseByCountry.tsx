@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { CountryDataType, WorldwideDataType } from '../utils/types'
 import { addComma } from '../utils/utilityFunctions'
 import { FixedSizeList } from 'react-window'
@@ -13,10 +12,10 @@ const BrowseByCountry: React.FC<Props> = ({
   worldwideCovData,
 }) => {
   return (
-    <div className="text-slate-700 ">
+    <div className="text-slate-900 ">
       <h1 className="font-bold ">Browse By Country</h1>
       <div>
-        <div className="grid grid-cols-4 border-b p-2 font-semibold text-slate-600 ">
+        <div className="grid grid-cols-4 border-b p-2 font-semibold text-slate-900 ">
           <span className="">Location</span>
           <span className="text-right" id="cases">
             Confirmed
@@ -42,24 +41,22 @@ const BrowseByCountry: React.FC<Props> = ({
                 style={style}
               >
                 <div className="flex  items-center space-x-4">
-                  <Image
+                  <img
                     src={countriesCovData[index].countryInfo.flag}
                     alt="flag"
-                    height={16}
-                    width={28}
-                    quality={50}
+                    className="h-4 w-8"
                   />
                   <span>{countriesCovData[index].country}</span>
                 </div>
                 <div className="space-x-2 ">
-                  <span className="hidden whitespace-nowrap  text-blue-500 md:inline-block ">
+                  <span className="hidden whitespace-nowrap  text-blue-600 md:inline-block ">
                     + {addComma(countriesCovData[index].todayCases)}
                   </span>
                   <span>{addComma(countriesCovData[index].cases)}</span>
                 </div>
                 <span>{addComma(countriesCovData[index].recovered)}</span>
                 <div className="space-x-2">
-                  <span className="hidden whitespace-nowrap text-red-500  md:inline-block ">
+                  <span className="hidden whitespace-nowrap text-red-600  md:inline-block ">
                     + {addComma(countriesCovData[index].todayDeaths)}
                   </span>
                   <span>{addComma(countriesCovData[index].deaths)}</span>
