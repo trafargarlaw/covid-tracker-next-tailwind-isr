@@ -44,7 +44,7 @@ const BrowseByCountry: React.FC<Props> = ({
                   <img
                     src={countriesCovData[index].countryInfo.flag}
                     alt="flag"
-                    className="h-4 w-8"
+                    className="aspect-auto w-8"
                   />
                   <span>{countriesCovData[index].country}</span>
                 </div>

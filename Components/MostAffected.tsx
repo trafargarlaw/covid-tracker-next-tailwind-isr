@@ -33,7 +33,7 @@ const MostAffected: React.FC<Props> = ({ countriesCovData }) => {
                 <img
                   src={country.countryInfo.flag}
                   alt="flag"
-                  className="h-4 w-8 rounded-md"
+                  className="aspect-auto w-8 rounded-md"
                 />
                 <span className="max-w-[5rem] overflow-hidden text-ellipsis whitespace-nowrap">
                   {country.country}
